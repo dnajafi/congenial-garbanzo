@@ -23,6 +23,12 @@ router.use(function(req, res, next){
 //////////////////////////////// PRIVATE ROUTES ////////////////////////////////
 // Only logged in users can see these routes
 
+router.get('/dashboard', function(req, res, next){
+  res.render('userDashboard', {
+    username: req.user.username
+  });
+});
+
 router.get('/protected', function(req, res, next) {
   res.render('protectedRoute', {
     username: req.user.username,
