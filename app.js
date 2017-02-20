@@ -81,6 +81,9 @@ passport.use(new LocalStrategy(function(username, password, done) {
 
 app.use('/', auth(passport));
 app.use('/', routes);
+// app.use('/', chatsRoutes);
+// app.use('/', messagesRoutes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -113,8 +116,24 @@ app.use(function(err, req, res, next) {
   });
 });
 
+//*********** Socket Stuff ***********
+
+var server = require('http').createServer(app);
+var socketIo = require('socket.io');
+var io = socketIo(server);
+
+io.on('connection', function(socket){
+  socket.on('chat message', function(message){
+    io.emit('chat message', message);
+  });
+});
+
+
 var port = process.env.PORT || 3000;
-app.listen(port);
-console.log('Express started. Listening on port %s', port);
+server.listen(port, function(){
+    console.log('Express started. Listening on port %s', port);
+});
+// app.listen(port);
+
 
 module.exports = app;
