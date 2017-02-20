@@ -1,5 +1,35 @@
-body {
-  min-height: 75rem;
-  padding-top: 6.5rem;
-  font: 14px "Open Sans", Helvetica, Arial, sans-serif;
+h1, h3 {
+  text-align:center;
 }
+
+p{
+  text-align: right;
+}
+
+.chat-list {
+  border: 1px solid #5D6063;
+}
+
+.new-message{
+  border: 1px solid #5D6063;
+}
+
+#messages{
+  list-style-type: none;
+}
+
+#message li{
+  padding: 5px 10px;
+}
+
+#messages li:nth-child(odd){
+  background-color: #eee;
+}
+
+.new-message-form{
+  text-align: center;
+}
+
+/*form{
+  margin: auto;
+}*/
